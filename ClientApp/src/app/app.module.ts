@@ -21,9 +21,43 @@ import { CounterComponent } from './counter/counter.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', loadChildren: 'app/fetch-data/fetch-data.module#FetchDataModule'}
+      {
+        path: '',
+        component: HomeComponent,
+        pathMatch: 'full',
+        data: {
+          title: 'Home',
+          meta: [{ name: 'description', content: 'This is an Counter page Description!' }],
+          links: [
+            { rel: 'canonical', href: 'http://blogs.example.com/counter/something' },
+            { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/counter' }
+          ]
+        }
+      },
+      {
+        path: 'counter',
+        component: CounterComponent,
+        data: {
+          title: 'Counter',
+          meta: [{ name: 'description', content: 'This is an Counter page Description!' }],
+          links: [
+            { rel: 'canonical', href: 'http://blogs.example.com/counter/something' },
+            { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/counter' }
+          ]
+        }
+      },
+      {
+        path: 'fetch-data',
+        loadChildren: 'app/fetch-data/fetch-data.module#FetchDataModule',
+        data: {
+          title: 'Fetch Data',
+          meta: [{ name: 'description', content: 'This is an Counter page Description!' }],
+          links: [
+            { rel: 'canonical', href: 'http://blogs.example.com/counter/something' },
+            { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/counter' }
+          ]
+        }
+      }
     ], { useHash: false, enableTracing: false, initialNavigation: 'enabled' })
   ],
   providers: [],
